@@ -97,9 +97,11 @@ player_name = input(blink("Enter your name : ", 0.035))
 
 
 # Item selection
-item_select = input(
-    blink(
-        """
+
+while not inventory:
+    item_select = input(
+        blink(
+            """
 ITEM SELECTION
 
 A ----> [Lighter, Knife, Rope]
@@ -107,11 +109,9 @@ B ----> [First aid kit, Knife, Lighter]
 C ----> [Lighter, First aid kit, Rope]
 
 Please select your item(A/B/C) : """,
-        0.035,
+            0.035,
+        )
     )
-)
-
-while not inventory:
     if item_select.upper().strip() == "A":
         inventory.extend(["Lighter", "Knife", "Rope"])
     elif item_select.upper().strip() == "B":
@@ -120,14 +120,7 @@ while not inventory:
         inventory.extend(["Lighter, First aid kit", "Rope"])
     else:
         print("\nPlease enter correct selection")
-        item_select = input("""
-ITEM SELECTION
 
-A ----> [Lighter, Knife, Rope]
-B ----> [First aid kit, Knife, Lighter]
-C ----> [Lighter, First aid kit, Rope]
-
-Please select your item(A/B/C) : """)
 #########################################################
 
 # main loop/game started
